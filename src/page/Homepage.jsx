@@ -19,10 +19,11 @@ const Homepage = () => {
                 <Header></Header>
                 <ShowCase></ShowCase>
                 <DrawerList items={listItems} />
+              
             </Box>
-            <Box sx={{ paddingLeft: 62 }}>
-            
-                <Box id="toc_1">
+            <span id="toc_1"></span>
+            <Box sx={{ paddingLeft: '62px' }}>
+                <Box >
                     <h1 >About us</h1>
                     <img src='asset/aboutUs.png'
                         style={{ width: '90%' }}
