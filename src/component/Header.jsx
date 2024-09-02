@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 const navItems = ['Welcome', 'Learning', 'Admission', 'Addresses'];
@@ -15,7 +13,7 @@ function Header() {
     <Box sx={{ display: 'flex' }}>
 
       <CssBaseline />
-     <AppBar component="nav" className="appbarThing">
+      <AppBar component="nav" className="appbarThing">
         <Toolbar sx={{
           borderTop: 15,
           borderBottom: 15,

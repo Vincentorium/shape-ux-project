@@ -30,12 +30,12 @@ const ShowCase = () => {
     return (
         <Box
             sx={{
-                margin: '94px 34px 34px 34px',
                 position: 'absolute',
-                top: '35%',
+                top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
-                width: '60%',
+                width: '78%',
+                height: '80%'
             }}
         >
             < Carousel autoPlay={true} >
