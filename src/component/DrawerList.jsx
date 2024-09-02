@@ -25,9 +25,13 @@ const DrawerList = ({ items }) => {
             width: 'auto',
           }}
         >
-          <ul>
+          <ul   style={{
+                padding: "3 0 3 17px",
+                margin: 0
+              }}>
             {items.map((item, index) => (
-              <li key={index} className="drawer-item">
+              <li 
+              key={index} className="drawer-item">
                 <a href={`#toc_${index}`}>
                   {item}
                 </a> 
