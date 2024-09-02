@@ -1,16 +1,17 @@
 import React from 'react';
 import { Fragment } from 'react';
 import Header from '../component/Header'
-import { Box } from '@mui/material';
+import ShowCase from '../component/ShowCase'
 
 const Homepage = () => {
 
+    return (
+        <>
+            <Header></Header>
+            hello
 
-  return (
-    <>
-    <Header></Header>
-      hello
-    </>
-  )
+            <ShowCase></ShowCase>
+        </>
+    );
 };
 export default Homepage;
