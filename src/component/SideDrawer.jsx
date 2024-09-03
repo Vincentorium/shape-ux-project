@@ -6,6 +6,7 @@ import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import ApplicationDialog from './ApplicationDialog'
 import Button from '@mui/joy/Button';
+import { Link } from 'react-router-dom';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -64,14 +65,13 @@ const SideDrawer = () => {
                   padding: 0,
                   border: 0
                 }}
-                startDecorator={<img src='asset/top.png'
+                startDecorator={<img src='/asset/top.png'
                   alt=""
                   style={{
                     width: '2.5rem',
                     marginLeft: 2
                   }}
                 />}
-
               >
                 <a href="#toc_0" style={{ textDecoration: 'none', color: '#333' }}>
                   Top

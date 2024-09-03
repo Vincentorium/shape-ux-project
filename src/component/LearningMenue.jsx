@@ -86,6 +86,7 @@ export default function BasicMenu() {
           },
         }}
         MenuListProps={{
+          onMouseLeave: handleClose,
           onMouseEnter: handleHoverA,
           style: { pointerEvents: "auto" }
         }}
