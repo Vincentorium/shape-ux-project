@@ -8,10 +8,12 @@ import './LearningMenue.css';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux"
 import { setPageSeleted } from '../redux/store';
+import { pageData } from '../commonData/pageData'
 
 
 
-export default function BasicMenu() {
+
+export default function BasicMenu({lanSettingLC}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
@@ -93,7 +95,7 @@ export default function BasicMenu() {
 
         }}
       >
-        Learning {
+          {pageData[lanSettingLC][1]} {
           !nonLearningPage.includes(pageSeletedLC) ?
             `(${pageSeletedLC})` : ''
         }
