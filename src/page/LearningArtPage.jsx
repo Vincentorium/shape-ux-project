@@ -1,49 +1,49 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../component/Header'
 import ShowCase from '../component/ShowCase'
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import DrawerList from '../component/DrawerList'
 import SideDrawer from '../component/SideDrawer'
+import { setPageSeleted } from '../redux/store';
 import { useSelector, useDispatch } from "react-redux"
-import { setLanSetting, setPageSeleted } from '../redux/store';
+
 import './Homepage.css'; // Import the CSS file
 
-const Homepage = () => {
-
+const LearningArtPage = () => {
     const dispatch = useDispatch()
 
-    const setLanSetting = (lanSeleted) => {
-        console.log(`COM-Header: setLanSetting ${lanSeleted}`)
-        dispatch(setLanSetting(lanSeleted))
-    }
+    useEffect(() => {
 
+        dispatch(setPageSeleted('music'))
+
+    }, [])
 
     const listItems = [
         'Top',
-        'About us',
-        'What we teach',
-        'How we teach'
+        'Introduction',
+        'Language Curriculum'
     ];
+
     var items = [
         {
-            name: "1sc",
+            name: "music/1",
             description: "Probably the most random thing you have ever seen!"
         },
         {
-            name: "2sc",
+            name: "music/2",
             description: "Hello World!"
         },
         {
-            name: "3sc",
+            name: "music/3",
             description: "Hello World!"
         },
         {
-            name: "4sc",
+            name: "music/4",
             description: "Hello World!"
         },
         {
-            name: "5sc",
+            name: "music/5",
             description: "Hello World!"
         }
     ]
@@ -51,35 +51,38 @@ const Homepage = () => {
         <Container sx={{ minWidth: 1495 }}  >
             <Box id="toc_0" sx={{ height: 707 }}>
                 <Header></Header>
-                <ShowCase items={items}></ShowCase>
+                <ShowCase
+                    items={items}
+                    startIndex={2}
+                ></ShowCase>
                 <DrawerList items={listItems} />
                 <SideDrawer></SideDrawer>
             </Box>
             <span id="toc_1"></span>
             <Box sx={{ paddingLeft: '62px' }}>
                 <Box >
-                    <h1 >About us</h1>
-                    <img src='/asset/aboutUs.png'
+                    <h1 >Introduction</h1>
+                    <img src={'/asset/showCase/music/L-language_1.png'}
+
                         style={{ width: '90%' }}
                         alt=""
                     />
                 </Box>
                 <Box id="toc_2">
-                    <h1 >What we teach</h1>
-                    <img src='/asset/homePage1.png'
+                    <h1 >Photo Exhibition</h1>
+                    <img src={'/asset/showCase/music/L-language_2.png'}
+
+                        style={{ width: '90%' }}
+                        alt=""
+                    />
+                    <img src={'/asset/showCase/music/L-language_3.png'}
                         style={{ width: '90%' }}
                         alt=""
                     />
                 </Box>
-                <Box id="toc_3">
-                    <h1 >How we teach</h1>
-                    <img src='/asset/homePage2.png'
-                        style={{ width: '90%' }}
-                        alt=""
-                    />
-                </Box>
+
             </Box>
         </Container >
     );
 };
-export default Homepage;
+export default LearningArtPage;

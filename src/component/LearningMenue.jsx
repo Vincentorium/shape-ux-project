@@ -6,15 +6,37 @@ import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
 import './LearningMenue.css';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux"
+import { setPageSeleted } from '../redux/store';
+
+
 
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const pageSeletedAlr = useSelector((state) => state.comStatusSlice.pageSeleted);
+  const [pageSeletedLC, setPageSeletedLC] = useState(pageSeletedAlr);
+  const nonLearningPage = ['home', 'admission', 'address']
 
-  const handleNav = () => {
+
+  const setNavFunc = (pageSeleted) => {
+    console.log(`#COM-Header: setNavFunc ${pageSeleted}`)
+    dispatch(setPageSeleted(pageSeleted))
+    setPageSeletedLC(pageSeleted)
     setIsHovered(false);
     setAnchorEl(null);
+    navigate(`/learning/${pageSeleted}`);
+  }
+  const handleLanguageNav = () => {
+    setNavFunc('language')
+  };
+  const handlArtNav = () => {
+    setNavFunc('art')
+  };
+  const handleNav = () => {
+
     navigate('/learning/language');
   };
 
@@ -61,16 +83,20 @@ export default function BasicMenu() {
         />}
 
         sx={{
-          fontSize: 20, fontWeight: 600,
+          fontSize: 20, fontWeight: 750,
           textTransform: 'capitalize',
           marginRight: 1,
           '&:hover': {
-            color: '#820632'
+            color: '#888888'
           },
-          color: isHovered ? '#820632' : '#fff',
+          color: isHovered ? '#888888' : (!nonLearningPage.includes(pageSeletedLC) ? '#820632' : '#fff')
+
         }}
       >
-        Learning
+        Learning {
+          !nonLearningPage.includes(pageSeletedLC) ?
+            `(${pageSeletedLC})` : ''
+        }
       </Button>
       <Menu
         className='learningMenue'
@@ -79,7 +105,6 @@ export default function BasicMenu() {
         open={open}
         onClose={handleClose}
         sx={{
-
           marginRight: 1,
           '&:hover': {
             color: '#820632'
@@ -95,13 +120,12 @@ export default function BasicMenu() {
         <MenuItem
           className='learningEle'
 
-          onClick={handleNav}>Languages</MenuItem>
+          onClick={handleLanguageNav}>Languages</MenuItem>
         <MenuItem
           className='learningEle'
-
           onClick={handleNav}>Maths and Sciences</MenuItem>
         <MenuItem
-          onClick={handleNav}>Art
+          onClick={handlArtNav}>Art
         </MenuItem>
         <MenuItem
           onClick={handleNav}>Music

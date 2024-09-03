@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -6,14 +6,48 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import LearningMenue from './LearningMenue'
 import { useNavigate } from 'react-router-dom';
-
+import { useSelector, useDispatch } from "react-redux"
+import { setLanSetting, setPageSeleted } from '../redux/store';
 
 function Header() {
+  const dispatch = useDispatch()
+  const lanSettingDefault = useSelector((state) => state.comStatusSlice.lanSetting);
+  const [lanSettingLC, setLanSettingLC] = useState(lanSettingDefault);
+  
+  const pageSeletedDefault = useSelector((state) => state.comStatusSlice.pageSeleted);
+  const [pageSeletedLC, setPageSeletedLC] = useState(pageSeletedDefault);
+
+  useEffect(() => {
+    console.log(`#useEffect-lanSettingLC is ${lanSettingLC}`)
+  }, [lanSettingLC])
+
+
+  const setLanSettingFunc = (lanSeleted) => {
+    console.log(`#COM-Header: setLanSetting ${lanSeleted}`)
+    dispatch(setLanSetting(lanSeleted))
+    setLanSettingLC(lanSeleted)
+  }
+  const setLanCHNSetting = () => {
+    setLanSettingFunc("CHN")
+  }
+  const setLanENGSetting = () => {
+    setLanSettingFunc("ENG")
+  }
+
+  const setNavFunc = (pageSeleted) => {
+    console.log(`#COM-Header: setNavFunc ${pageSeleted}`)
+    dispatch(setPageSeleted(pageSeleted))
+    setPageSeletedLC(pageSeleted)
+
+     
+    navigate(`/${pageSeleted}`);
+  }
+  
 
 
   const navigate = useNavigate();
-  const handleNav = () => {
-    navigate('/home');
+  const handleHomeNav = () => {
+    setNavFunc('home')
   };
   return (
     <Box sx={{ display: 'flex' }}>
@@ -47,30 +81,34 @@ function Header() {
               display: { xs: 'none', sm: 'block' },
               marginTop: 4
             }}
-          >   <Button variant="text"
-            sx={{
-              color: '#fff',
-              paddingRight: 0,
-              minWidth: '0',
-              fontSize: '1.1rem',
-              fontWeight: 900,
-              '&:hover': {
-                color: '#820632'
-              }
-            }}
-          >ENG</Button>
+          >
+            <Button variant="text"
+              sx={{
+                color: lanSettingLC === 'ENG' ? '#820632' : '#fff', 
+                paddingRight: 0,
+                minWidth: '0',
+                fontSize: '1.1rem',
+                fontWeight: 900,
+                '&:hover': {
+                  color: '#888888'
+                }
+              }}
+              onClick={setLanENGSetting}
+            >ENG
+            </Button>
             /
             <Button variant="text"
               sx={{
-                color: '#fff',
+                color: lanSettingLC === 'CHN' ? '#820632' : '#fff', 
                 paddingLeft: 0,
                 minWidth: '0',
                 fontSize: '1.1rem',
                 fontWeight: 900,
                 '&:hover': {
-                  color: '#820632'
+                  color: '#888888'
                 }
               }}
+              onClick={setLanCHNSetting}
             >中</Button>
             <img src='/asset/languageIcon.png'
               alt=""
@@ -80,15 +118,17 @@ function Header() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, backgroundColor: '#041138' }}>
 
             <Button key='Welcome' sx={{
-              color: '#fff', fontSize: 20, fontWeight: 600,
+              
+              color: pageSeletedLC === 'home' ? '#820632' : '#fff', 
+              fontSize: 20, fontWeight: 600,
               textTransform: 'capitalize',
               marginRight: 1,
               '&:hover': {
-                color: '#820632'
+                color: '#888888'
               },
 
             }}
-              onClick={handleNav}
+              onClick={handleHomeNav}
             >
               Welcome
             </Button>
@@ -99,7 +139,7 @@ function Header() {
               textTransform: 'capitalize',
               marginRight: 1,
               '&:hover': {
-                color: '#820632'
+                color: '#888888'
               },
             }}>
               Admission
@@ -109,7 +149,7 @@ function Header() {
               textTransform: 'capitalize',
               marginRight: 1,
               '&:hover': {
-                color: '#820632'
+                color: '#888888'
               },
             }}>
               Addresses

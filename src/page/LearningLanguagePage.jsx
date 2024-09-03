@@ -5,10 +5,20 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import DrawerList from '../component/DrawerList'
 import SideDrawer from '../component/SideDrawer'
+import { setPageSeleted } from '../redux/store';
+import { useSelector, useDispatch } from "react-redux"
 
 import './Homepage.css'; // Import the CSS file
 
 const LearningPage = () => {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+
+        dispatch(setPageSeleted('music'))
+
+    }, [])
+
     const listItems = [
         'Top',
         'Introduction',
@@ -62,12 +72,12 @@ const LearningPage = () => {
                         style={{ width: '90%' }}
                         alt=""
                     />
-                     <img src={'/asset/showCase/music/L-language_3.png'}
+                    <img src={'/asset/showCase/music/L-language_3.png'}
                         style={{ width: '90%' }}
                         alt=""
                     />
                 </Box>
-           
+
             </Box>
         </Container >
     );

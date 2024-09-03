@@ -3,8 +3,8 @@ import { Box } from '@mui/material';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
-const ShowCase = ({ items }) => {
-    
+const ShowCase = ({ items, startIndex = 0 }) => {
+
 
     return (
         <Box
@@ -17,7 +17,9 @@ const ShowCase = ({ items }) => {
                 height: '80%'
             }}
         >
-            < Carousel autoPlay={true} >
+            < Carousel
+                autoPlay={true}
+                selectedItem={startIndex} >
                 {
                     items.map((item, index) => (
                         <div key={index}>

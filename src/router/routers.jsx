@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import HomePage from '../page/Homepage'
 import LearningLanguagePage from '../page/LearningLanguagePage'
+import LearningArtPage from '../page/LearningArtPage'
 import {
     createBrowserRouter,
     RouterProvider,
@@ -15,6 +16,10 @@ const CustomRoute = createBrowserRouter([
     {
         path: "/learning/language",
         element: <LearningLanguagePage />,
+    },
+    {
+        path: "/learning/art",
+        element: <LearningArtPage />,
     },
     {
         path: "/",
