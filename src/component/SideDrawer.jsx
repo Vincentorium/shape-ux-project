@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import ApplicationDialog from './ApplicationDialog'
+import Button from '@mui/joy/Button';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -44,9 +45,38 @@ const SideDrawer = () => {
         <Box sx={{ width: '100%' }}>
           <Stack spacing={2}>
 
-            <Item>          <ApplicationDialog></ApplicationDialog></Item>
-            <Item><AddressBox ></AddressBox></Item>
+            <Item>
+              <ApplicationDialog></ApplicationDialog>
+            </Item>
 
+            <Item>
+              <AddressBox ></AddressBox>
+            </Item>
+
+            <Item>
+              <Button
+                className="applyButton"
+                variant="outlined"
+                color="neutral"
+                style={{
+                  display: 'block',
+                  margin: '0',
+                  padding: 0,
+                  border: 0
+                }}
+                startDecorator={<img src='asset/top.png'
+                  alt=""
+                  style={{
+                    width: '2.5rem',
+                    marginLeft: 2
+                  }}
+                />}
+
+              >
+                <a href="#toc_0" style={{ textDecoration: 'none', color: '#333' }}>
+                  Top
+                </a>
+              </Button></Item>
 
           </Stack>
 
