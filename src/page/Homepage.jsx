@@ -4,6 +4,8 @@ import ShowCase from '../component/ShowCase'
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import DrawerList from '../component/DrawerList'
+import SideDrawer from '../component/SideDrawer'
+
 import './Homepage.css'; // Import the CSS file
 
 const Homepage = () => {
@@ -19,7 +21,7 @@ const Homepage = () => {
                 <Header></Header>
                 <ShowCase></ShowCase>
                 <DrawerList items={listItems} />
-              
+                <SideDrawer></SideDrawer>
             </Box>
             <span id="toc_1"></span>
             <Box sx={{ paddingLeft: '62px' }}>
