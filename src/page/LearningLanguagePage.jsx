@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../component/Header'
 import ShowCase from '../component/ShowCase'
 import Box from '@mui/material/Box';
@@ -8,35 +8,37 @@ import SideDrawer from '../component/SideDrawer'
 
 import './Homepage.css'; // Import the CSS file
 
-const Homepage = () => {
+const LearningPage = () => {
     const listItems = [
         'Top',
         'About us',
         'What we teach',
         'How we teach'
     ];
+
     var items = [
         {
-            name: "1sc",
+            name: "music/1",
             description: "Probably the most random thing you have ever seen!"
         },
         {
-            name: "2sc",
+            name: "music/2",
             description: "Hello World!"
         },
         {
-            name: "3sc",
+            name: "music/3",
             description: "Hello World!"
         },
         {
-            name: "4sc",
+            name: "music/4",
             description: "Hello World!"
         },
         {
-            name: "5sc",
+            name: "music/5",
             description: "Hello World!"
         }
     ]
+    useEffect(() => { console.log(`process.env.PUBLIC_URL is ${process.env.PUBLIC_URL}`) });
     return (
         <Container sx={{ minWidth: 1495 }}  >
             <Box id="toc_0" sx={{ height: 707 }}>
@@ -48,8 +50,9 @@ const Homepage = () => {
             <span id="toc_1"></span>
             <Box sx={{ paddingLeft: '62px' }}>
                 <Box >
-                    <h1 >About us</h1>
-                    <img src='/asset/aboutUs.png'
+                    <h1 >Learning</h1>
+                    <img src={'/asset/aboutUs.png'}
+
                         style={{ width: '90%' }}
                         alt=""
                     />
@@ -72,4 +75,4 @@ const Homepage = () => {
         </Container >
     );
 };
-export default Homepage;
+export default LearningPage;

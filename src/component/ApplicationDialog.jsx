@@ -54,7 +54,7 @@ export default function DialogSelect() {
           padding: 0,
           border: 0
         }}
-        startDecorator={<img src='asset/application.svg'
+        startDecorator={<img src='/asset/application.svg'
           alt=""
           style={{
             width: '1.85rem',

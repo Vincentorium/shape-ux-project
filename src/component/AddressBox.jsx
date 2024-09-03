@@ -75,7 +75,7 @@ export default function AddressBox() {
           padding: 0,
           border: 0
         }}
-        startDecorator={<img src='asset/contact.svg'
+        startDecorator={<img src='/asset/contact.svg'
           alt=""
           style={{
             width: '1.85rem',
@@ -147,7 +147,7 @@ export default function AddressBox() {
                   width:1000
                 }}
                 >
-                  <img src={`asset/addresssInfo/${option}.png`}
+                  <img src={`/asset/addresssInfo/${option}.png`}
                     alt=""
                     style={{ width: '80%', borderRadius: '5px' }}
                   />
