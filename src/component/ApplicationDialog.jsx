@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import Button from '@mui/joy/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -13,11 +13,6 @@ import Select from '@mui/material/Select';
 
 export default function DialogSelect() {
   const [open, setOpen] = React.useState(false);
-  const [age, setAge] = React.useState('');
-
-  const handleChange = (event) => {
-    setAge(Number(event.target.value) || '');
-  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -29,45 +24,66 @@ export default function DialogSelect() {
     }
   };
 
+  const [selectedValue, setSelectedValue] = useState(['klt']);
+
+  const handleChange = (event) => {
+    const selectedOption = options.find(option => option.value === event.target.value);
+
+    setSelectedValue(selectedOption.value);
+
+  };
+
+  const options = [
+    { value: 'klt', label: 'Kowloon Tong' },
+    { value: 'mf1', label: 'Mei Foo' },
+    { value: 'yl1', label: 'Yuen Long' },
+    { value: 'tko', label: 'Tseung Kwan O' },
+    { value: 'tm', label: 'Tuen Mun' },
+    { value: 'wp', label: 'Wetland Park' }
+  ];
+
   return (
     <div>
-      <Button onClick={handleClickOpen}>Open select dialog</Button>
+      <Button
+        className="applyButton"
+        variant="outlined"
+        color="neutral"
+        style={{
+          display: 'block',
+          margin: '0',
+          padding: 0,
+          border: 0
+        }}
+        startDecorator={<img src='asset/application.svg'
+          alt=""
+          style={{
+            width: '1.85rem',
+            marginLeft: 5
+          }}
+        />}
+        onClick={handleClickOpen}
+      >
+        <div>Apply</div>
+      </Button>
+
+
       <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
-        <DialogTitle>Fill the form</DialogTitle>
+        <DialogTitle>Select a campus to apply</DialogTitle>
         <DialogContent>
-          <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap' }}>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel htmlFor="demo-dialog-native">Age</InputLabel>
-              <Select
-                native
-                value={age}
-                onChange={handleChange}
-                input={<OutlinedInput label="Age" id="demo-dialog-native" />}
-              >
-                <option aria-label="None" value="" />
-                <option value={10}>Ten</option>
-                <option value={20}>Twenty</option>
-                <option value={30}>Thirty</option>
-              </Select>
-            </FormControl>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel id="demo-dialog-select-label">Age</InputLabel>
-              <Select
-                labelId="demo-dialog-select-label"
-                id="demo-dialog-select"
-                value={age}
-                onChange={handleChange}
-                input={<OutlinedInput label="Age" />}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
+          <FormControl sx={{ m: 1, width: 300 }}>
+            <InputLabel id="demo-multiple-name-label">Campus</InputLabel>
+            <Select
+              labelId="demo-multiple-name-label"
+              id="demo-multiple-name"
+              value={selectedValue}
+              onChange={handleChange}
+              input={<OutlinedInput label="Campus" />}
+            >
+              {options.map(option => (
+                <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>

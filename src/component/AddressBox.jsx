@@ -6,20 +6,16 @@ import DialogContent from '@mui/joy/DialogContent';
 import ModalClose from '@mui/joy/ModalClose';
 import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
-import Stack from '@mui/joy/Stack';
 import Sheet from '@mui/joy/Sheet';
-import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
 
-export default function DrawerFilters() {
+export default function AddressBox() {
   const [open, setOpen] = React.useState(false);
   const [type, setType] = React.useState('Guesthouse');
-  const [amenities, setAmenities] = React.useState([0, 6]);
 
   const [selectedValue, setSelectedValue] = useState(['klt']);
   const [selectedValuePic, setSelectedValuePic] = useState(['klt1', 'klt2', 'klt3']);
@@ -35,10 +31,9 @@ export default function DrawerFilters() {
   };
 
 
-  // dropdown list
-
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
+  
   const MenuProps = {
     PaperProps: {
       style: {
@@ -47,8 +42,6 @@ export default function DrawerFilters() {
       },
     },
   };
-
-
 
   const options = [
     { value: 'klt', label: 'Kowloon Tong' },
@@ -82,7 +75,7 @@ export default function DrawerFilters() {
           padding: 0,
           border: 0
         }}
-        startDecorator={<img src='asset/application.svg'
+        startDecorator={<img src='asset/contact.svg'
           alt=""
           style={{
             width: '1.85rem',
@@ -91,7 +84,7 @@ export default function DrawerFilters() {
         />}
         onClick={() => setOpen(true)}
       >
-        <div>Inquiry</div>
+        <div>Contact</div>
       </Button>
       <Drawer
         size="md"
@@ -168,14 +161,7 @@ export default function DrawerFilters() {
 
 
           <Divider sx={{ mt: 'auto' }} />
-          <Stack
-            direction="row"
-            useFlexGap
-            spacing={1}
-            sx={{ justifyContent: 'space-between' }}
-          >
-            <Button onClick={() => setOpen(false)}>Close</Button>
-          </Stack>
+       
         </Sheet>
       </Drawer>
     </React.Fragment>
