@@ -101,7 +101,7 @@ export default function DrawerFilters() {
         slotProps={{
           content: {
             sx: {
-              width: 1100,
+              width: 940,
               bgcolor: 'transparent',
               p: { md: 3, sm: 0 },
               boxShadow: 'none',
