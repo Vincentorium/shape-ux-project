@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux"
 import { setPageSeleted } from '../redux/store';
 import { useNavigate } from 'react-router-dom';
 
-export default function ApplicationDialogForm({ setOpen,open  }) {
+export default function ApplicationCampusDialog({ setOpen,open  }) {
 
   const dispatch = useDispatch()
   const navigate = useNavigate();

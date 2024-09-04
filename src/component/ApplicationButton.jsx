@@ -13,7 +13,7 @@ import Select from '@mui/material/Select';
 import { useDispatch } from "react-redux"
 import { setPageSeleted } from '../redux/store';
 import { useNavigate } from 'react-router-dom';
-import ApplicationDialogForm from './ApplicationDialogForm'
+import ApplicationCampusDialog from './ApplicationCampusDialog'
 
 export default function DialogSelect() {
   const [open, setOpen] = React.useState(false);
@@ -81,7 +81,7 @@ export default function DialogSelect() {
         <div>Apply</div>
       </Button>
 
-      {open && <ApplicationDialogForm setOpen={setOpen} open={open} ></ApplicationDialogForm>}
+      {open && <ApplicationCampusDialog setOpen={setOpen} open={open} ></ApplicationCampusDialog>}
     </div>
   );
 }

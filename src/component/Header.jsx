@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { setLanSetting, setPageSeleted } from '../redux/store';
 import { pageData } from '../commonData/pageData'
 import IconButton from '@mui/material/IconButton';
-import ApplicationDialogForm from './ApplicationDialogForm'
+import ApplicationCampusDialog from './ApplicationCampusDialog'
 
 function Header() {
   const dispatch = useDispatch()
@@ -70,7 +70,7 @@ function Header() {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      {openApplication && <ApplicationDialogForm open={true} setOpen={setOpenApplication}></ApplicationDialogForm>}
+      {openApplication && <ApplicationCampusDialog open={true} setOpen={setOpenApplication}></ApplicationCampusDialog>}
       <CssBaseline />
       <AppBar component="nav" className="appbarThing">
         <Toolbar sx={{

@@ -4,7 +4,7 @@ import AddressBox from './AddressBox'
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
-import ApplicationDialog from './ApplicationDialog'
+import ApplicationButton from './ApplicationButton'
 import Button from '@mui/joy/Button';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -43,7 +43,7 @@ const SideDrawer = () => {
           <Stack spacing={2}>
 
             <Item>
-              <ApplicationDialog></ApplicationDialog>
+              <ApplicationButton></ApplicationButton>
             </Item>
 
             <Item>
