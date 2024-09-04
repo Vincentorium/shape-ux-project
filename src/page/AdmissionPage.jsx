@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { campusData } from '../commonData/campusData'
 import Stack from '@mui/material/Stack';
 import Button from '@mui/joy/Button';
-
+import Bottom from '../component/Bottom';
 import './Homepage.css'; // Import the CSS file
 
 const AdmissionPage = () => {
@@ -88,10 +88,12 @@ const AdmissionPage = () => {
                                 <Button
                                     key={campus.value}
                                     value={campus.value}
-                                    sx={{ backgroundColor: 'black',
-                                         color: 'silver', 
-                                         borderRadius: 0,
-                                        width:200 }}
+                                    sx={{
+                                        backgroundColor: 'black',
+                                        color: 'silver',
+                                        borderRadius: 0,
+                                        width: 200
+                                    }}
                                     onClick={() => setCampusSelected(campus.value)}
                                 >
                                     {campus.label}
@@ -112,16 +114,18 @@ const AdmissionPage = () => {
                                 />
                             </Box>
                             <Box>
-                            <img src={`/asset/showCase/admission/admission_content_apply.png`}
+                                <img src={`/asset/showCase/admission/admission_content_apply.png`}
                                     alt=""
-                                    style={{ width: '80%' ,borderRadius:12}}
+                                    style={{ width: '80%', borderRadius: 12 }}
                                 />
                             </Box>
                         </Stack>
                     </Box>
                 </Box>
-
             </Box>
+<br></br>
+            <Bottom />
+
         </Container >
     );
 };

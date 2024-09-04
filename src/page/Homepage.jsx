@@ -5,8 +5,8 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import DrawerList from '../component/DrawerList'
 import SideDrawer from '../component/SideDrawer'
-import { useSelector, useDispatch } from "react-redux"
-import { setLanSetting, setPageSeleted } from '../redux/store';
+import { useDispatch } from "react-redux"
+import Bottom from '../component/Bottom';
 import './Homepage.css'; // Import the CSS file
 
 const Homepage = () => {
@@ -79,6 +79,7 @@ const Homepage = () => {
                     />
                 </Box>
             </Box>
+            <Bottom />
         </Container >
     );
 };
