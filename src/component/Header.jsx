@@ -3,7 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
+import Button from '@mui/joy/Button';
 import LearningMenue from './LearningMenue'
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux"
@@ -19,16 +19,9 @@ function Header() {
   const pageSeletedDefault = useSelector((state) => state.comStatusSlice.pageSeleted);
   const [pageSeletedLC, setPageSeletedLC] = useState(pageSeletedDefault);
 
-  const lanSettingDisplay = { "ENG": ["Welcome", "Learning", "Admission", "Address"], "CHN": ["歡迎", "學習", "入學", "地址"] }
-
-
   useEffect(() => {
-    console.log(`#useEffect-lanSettingLC is ${lanSettingLC}`)
-    let a = pageData["ENG"]
-    console.log("#a is ", a)
-    let b = pageData["CHN"]
-    console.log("#B is ", b)
-    console.log("#B0 is ", b[0])
+    console.log(`#Header-useEffect-lanSettingLC is ${lanSettingLC}`)
+    console.log(`#Header-useEffect-pageSeletedLC is ${pageSeletedLC === 'application' }`)
   }, [lanSettingLC])
 
 
@@ -48,8 +41,8 @@ function Header() {
     console.log(`#COM-Header: setNavFunc ${pageSeleted}`)
     dispatch(setPageSeleted(pageSeleted))
     setPageSeletedLC(pageSeleted)
-
-
+    
+console.log(`#application is ${pageSeleted}`)
     navigate(`/${pageSeleted}`);
   }
 
@@ -59,6 +52,13 @@ function Header() {
   const handleHomeNav = () => {
     setNavFunc('home')
   };
+  const handleAdmissionNav = () => {
+    setNavFunc('admission')
+  };
+  const handleApplicationNav = () => {
+    setNavFunc('application')
+  }
+
   return (
     <Box sx={{ display: 'flex' }}>
 
@@ -127,44 +127,59 @@ function Header() {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, backgroundColor: '#041138' }}>
 
-            <Button key='Welcome' sx={{
+            <Button
+              variant="text"
+              key='Welcome' sx={{
 
-              color: pageSeletedLC === 'home' ? '#820632' : '#fff',
-              fontSize: 20, fontWeight: 600,
-              textTransform: 'capitalize',
-              marginRight: 1,
-              '&:hover': {
-                color: '#888888'
-              },
+                color: pageSeletedLC === 'home' ? '#820632' : '#fff',
+                fontSize: 20, fontWeight: 600,
+                textTransform: 'capitalize',
+                marginRight: 1,
+                '&:hover': {
+                  color: '#888888'
+                },
 
-            }}
+              }}
               onClick={handleHomeNav}
             >
               {pageData[lanSettingLC][0]}
             </Button>
             <LearningMenue lanSettingLC={lanSettingLC} />
 
-            <Button key='Admission' sx={{
-              color: '#fff', fontSize: 20, fontWeight: 600,
-              textTransform: 'capitalize',
-              marginRight: 1,
-              '&:hover': {
-                color: '#888888'
-              },
-            }}>
+            <Button
+              variant="text"
+              key='Admission' sx={{
+                color: pageSeletedLC === 'admission' ? '#820632' : '#fff',
+                fontSize: 20, fontWeight: 600,
+                textTransform: 'capitalize',
+                marginRight: 1,
+                '&:hover': {
+                  color: '#888888'
+                },
+
+              }}
+              onClick={handleAdmissionNav}
+            >
               {pageData[lanSettingLC][2]}
 
             </Button>
-            <Button key='Addresses' sx={{
-              color: '#fff', fontSize: 20, fontWeight: 600,
-              textTransform: 'capitalize',
-              marginRight: 1,
-              '&:hover': {
-                color: '#888888'
-              },
-            }}>
-              {pageData[lanSettingLC][3]}
+            <Button
+              variant="text"
+              key='Addresses'
+              sx={{
 
+                color: pageSeletedLC === 'application' ? '#820632' : '#fff',
+                 fontSize: 20, fontWeight: 600,
+                textTransform: 'capitalize',
+                marginRight: 1,
+                '&:hover': {
+                  color: '#888888'
+                },
+              }
+              }
+              onClick={handleApplicationNav}
+            >
+              {pageData[lanSettingLC][3]}
             </Button>
           </Box>
 

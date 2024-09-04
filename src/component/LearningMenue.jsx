@@ -20,7 +20,7 @@ export default function BasicMenu({lanSettingLC}) {
   const dispatch = useDispatch()
   const pageSeletedAlr = useSelector((state) => state.comStatusSlice.pageSeleted);
   const [pageSeletedLC, setPageSeletedLC] = useState(pageSeletedAlr);
-  const nonLearningPage = ['home', 'admission', 'address']
+  const nonLearningPage = ['home', 'admission', 'application']
 
 
   const setNavFunc = (pageSeleted) => {
@@ -78,7 +78,7 @@ export default function BasicMenu({lanSettingLC}) {
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
-        variant="plain"
+        variant="text"
         endDecorator={<img src={`/asset/downArrow.png`}
           alt=""
           style={{ width: '10px' }}
