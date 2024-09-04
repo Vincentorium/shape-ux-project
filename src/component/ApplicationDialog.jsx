@@ -10,9 +10,14 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useSelector, useDispatch } from "react-redux"
+import { setPageSeleted } from '../redux/store';
+import { useNavigate } from 'react-router-dom';
 
 export default function DialogSelect() {
   const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -23,6 +28,14 @@ export default function DialogSelect() {
       setOpen(false);
     }
   };
+  const handleNav = () => {
+    let pageSeleted = 'application'
+    console.log(`#COM-Header: setNavFunc ${pageSeleted}`)
+    dispatch(setPageSeleted(pageSeleted))
+
+    navigate(`/${pageSeleted}`);
+  }
+
 
   const [selectedValue, setSelectedValue] = useState(['klt']);
 
@@ -87,7 +100,7 @@ export default function DialogSelect() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Ok</Button>
+          <Button onClick={handleNav}>Ok</Button>
         </DialogActions>
       </Dialog>
     </div>
