@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../component/Header'
 import ShowCase from '../component/ShowCase'
 import Box from '@mui/material/Box';
@@ -16,16 +16,18 @@ import './Homepage.css'; // Import the CSS file
 const AdmissionPage = () => {
     const dispatch = useDispatch()
     const [campusSelected, setCampusSelected] = React.useState('klt');
-
+    const [clickedButton, setClickedButton] = useState('klt');
     useEffect(() => {
 
         dispatch(setPageSeleted('music'))
 
     }, [])
-    const handleCampusSeleted = (campus) => {
-        console.log(`#handleCampusSeleted is  ${handleCampusSeleted}`)
+    const handleCampusSelected = (campus) => {
+        console.log(`#handleCampusSeleted is  ${campus}`)
+        setClickedButton(campus)
         setCampusSelected(campus)
     }
+
 
 
     const listItems = [
@@ -86,15 +88,16 @@ const AdmissionPage = () => {
                         <Stack spacing={0.1}>
                             {campusData.map(campus => (
                                 <Button
+                                    color="neutral"
                                     key={campus.value}
                                     value={campus.value}
                                     sx={{
-                                        backgroundColor: 'black',
-                                        color: 'silver',
+                                        backgroundColor: clickedButton === campus.value ? 'grey' : 'black',
+                                        color: clickedButton === campus.value ? 'white' : 'silver',
                                         borderRadius: 0,
                                         width: 200
                                     }}
-                                    onClick={() => setCampusSelected(campus.value)}
+                                    onClick={() => handleCampusSelected(campus.value)}
                                 >
                                     {campus.label}
                                 </Button>
@@ -123,7 +126,7 @@ const AdmissionPage = () => {
                     </Box>
                 </Box>
             </Box>
-<br></br>
+            <br></br>
             <Bottom />
 
         </Container >

@@ -6,7 +6,6 @@ import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import ApplicationDialog from './ApplicationDialog'
 import Button from '@mui/joy/Button';
-import { Link } from 'react-router-dom';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -21,7 +20,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const SideDrawer = () => {
-  const [hoveredItem, setHoveredItem] = useState(false);
 
   return (
     <div
@@ -31,9 +29,7 @@ const SideDrawer = () => {
         right: 22,
       }}
       className="drawer"
-      onMouseEnter={() => setHoveredItem(true)}
-      onMouseLeave={() => setHoveredItem(false)}>
-
+    >
       <Box
         sx={{
           border: '1px solid #ccc',

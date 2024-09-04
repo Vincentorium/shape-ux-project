@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/joy/Button';
 import Dialog from '@mui/material/Dialog';
@@ -13,20 +13,21 @@ import Select from '@mui/material/Select';
 import { useDispatch } from "react-redux"
 import { setPageSeleted } from '../redux/store';
 import { useNavigate } from 'react-router-dom';
-import ApplicationDialogForm from './ApplicationDialogForm'
 
-export default function DialogSelect() {
-  const [open, setOpen] = React.useState(false);
+export default function ApplicationDialogForm({ setOpen,open  }) {
+
   const dispatch = useDispatch()
   const navigate = useNavigate();
 
-  const handleClickOpen = () => {
-    console.log(`# box - open handle set open true`)
-    setOpen(true);
-  };
+  useEffect(() => {
+    console.log(`#setOpen is ${open}`)
+    
+  }, [])
+
 
   const handleClose = (event, reason) => {
     if (reason !== 'backdropClick') {
+      console.log(`#setOpen is false`)
       setOpen(false);
     }
   };
@@ -59,29 +60,29 @@ export default function DialogSelect() {
 
   return (
     <div>
-      <Button
-        className="applyButton"
-        variant="outlined"
-        color="neutral"
-        style={{
-          display: 'block',
-          margin: '0',
-          padding: 0,
-          border: 0
-        }}
-        startDecorator={<img src='/asset/application.svg'
-          alt=""
-          style={{
-            width: '1.85rem',
-            marginLeft: 5
-          }}
-        />}
-        onClick={handleClickOpen}
-      >
-        <div>Apply</div>
-      </Button>
-
-      {open && <ApplicationDialogForm setOpen={setOpen} open={open} ></ApplicationDialogForm>}
+      <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
+        <DialogTitle>Select a campus to apply</DialogTitle>
+        <DialogContent>
+          <FormControl sx={{ m: 1, width: 300 }}>
+            <InputLabel id="demo-multiple-name-label">Campus</InputLabel>
+            <Select
+              labelId="demo-multiple-name-label"
+              id="demo-multiple-name"
+              value={selectedValue}
+              onChange={handleChange}
+              input={<OutlinedInput label="Campus" />}
+            >
+              {options.map(option => (
+                <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleNav}>Ok</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

@@ -1,15 +1,10 @@
 import React, { useEffect } from 'react';
 import Header from '../component/Header'
-import ShowCase from '../component/ShowCase'
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import DrawerList from '../component/DrawerList'
 import SideDrawer from '../component/SideDrawer'
 import { setPageSeleted } from '../redux/store';
 import { useSelector, useDispatch } from "react-redux"
-import { campusData } from '../commonData/campusData'
-import Stack from '@mui/material/Stack';
-import Button from '@mui/joy/Button';
 
 import './Homepage.css'; // Import the CSS file
 

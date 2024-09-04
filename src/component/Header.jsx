@@ -10,12 +10,13 @@ import { useSelector, useDispatch } from "react-redux"
 import { setLanSetting, setPageSeleted } from '../redux/store';
 import { pageData } from '../commonData/pageData'
 import IconButton from '@mui/material/IconButton';
+import ApplicationDialogForm from './ApplicationDialogForm'
 
 function Header() {
   const dispatch = useDispatch()
   const lanSettingDefault = useSelector((state) => state.comStatusSlice.lanSetting);
   const [lanSettingLC, setLanSettingLC] = useState(lanSettingDefault);
-
+  const [openApplication, setOpenApplication] = useState(false);
   const pageSeletedDefault = useSelector((state) => state.comStatusSlice.pageSeleted);
   const [pageSeletedLC, setPageSeletedLC] = useState(pageSeletedDefault);
 
@@ -61,12 +62,15 @@ function Header() {
     setNavFunc('admission')
   };
   const handleApplicationNav = () => {
-    setNavFunc('application')
+    console.log(`#call handle application nav`)
+    setOpenApplication(true);
+
+    //   setNavFunc('application')
   }
 
   return (
     <Box sx={{ display: 'flex' }}>
-
+      {openApplication && <ApplicationDialogForm open={true} setOpen={setOpenApplication}></ApplicationDialogForm>}
       <CssBaseline />
       <AppBar component="nav" className="appbarThing">
         <Toolbar sx={{
@@ -130,12 +134,12 @@ function Header() {
               style={{ width: '0.85rem' }}
             />
           </Box>
-          <Box sx={{ 
-            flexGrow: 4, 
+          <Box sx={{
+            flexGrow: 4,
             display: { xs: 'none', sm: 'block' },
-             backgroundColor: '#041138',
-             
-             }}>
+            backgroundColor: '#041138',
+
+          }}>
 
             <Button
               variant="text"
@@ -201,7 +205,7 @@ function Header() {
             </IconButton>
             <Box>
               <img src={`/asset/fbIcon.svg`}
-                style={{ width: '30px',paddingTop:3,cursor:'pointer' }}
+                style={{ width: '30px', paddingTop: 3, cursor: 'pointer' }}
                 onClick={handleNavFB}
               />
 
@@ -209,7 +213,7 @@ function Header() {
 
             <Box>
               <img src={`/asset/igIcon.svg`}
-                style={{ width: '46px',cursor:'pointer' }}
+                style={{ width: '46px', cursor: 'pointer' }}
                 onClick={handleNavIG}
 
               />
