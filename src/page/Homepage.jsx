@@ -3,7 +3,7 @@ import Header from '../component/Header'
 import ShowCase from '../component/ShowCase'
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import DrawerList from '../component/DrawerList'
+import ToCList from '../component/ToCList'
 import SideDrawer from '../component/SideDrawer'
 import { useDispatch } from "react-redux"
 import Bottom from '../component/Bottom';
@@ -52,7 +52,7 @@ const Homepage = () => {
             <Box id="toc_0" sx={{ height: 707 }}>
                 <Header></Header>
                 <ShowCase items={items}></ShowCase>
-                <DrawerList items={listItems} />
+                <ToCList items={listItems} />
                 <SideDrawer></SideDrawer>
             </Box>
             <span id="toc_1"></span>

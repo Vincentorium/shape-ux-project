@@ -3,7 +3,7 @@ import Header from '../component/Header'
 import ShowCase from '../component/ShowCase'
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import DrawerList from '../component/DrawerList'
+import ToCList from '../component/ToCList'
 import SideDrawer from '../component/SideDrawer'
 import { setPageSeleted } from '../redux/store';
 import { useSelector, useDispatch } from "react-redux"
@@ -55,7 +55,7 @@ const LearningArtPage = () => {
                     items={items}
                     startIndex={2}
                 ></ShowCase>
-                <DrawerList items={listItems} />
+                <ToCList items={listItems} />
                 <SideDrawer></SideDrawer>
             </Box>
             <span id="toc_1"></span>
