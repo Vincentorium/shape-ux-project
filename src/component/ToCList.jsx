@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
+
+
+/*
+handle the right floating table of content 
+*/
 const DrawerList = ({ items }) => {
   const [hoveredItem, setHoveredItem] = useState(false);
 

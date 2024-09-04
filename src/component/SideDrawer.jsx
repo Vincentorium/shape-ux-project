@@ -18,7 +18,9 @@ const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: '#1A2027',
   }),
 }));
-
+/*
+handle the floating left side button
+*/
 const SideDrawer = () => {
 
   return (

@@ -11,8 +11,9 @@ import { setPageSeleted } from '../redux/store';
 import { pageData } from '../commonData/pageData'
 
 
-
-
+/*
+handle the Learning page which require spearte page 
+*/
 export default function BasicMenu({lanSettingLC}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);

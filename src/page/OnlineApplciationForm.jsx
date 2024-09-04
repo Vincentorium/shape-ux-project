@@ -4,23 +4,23 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import SideDrawer from '../component/SideDrawer'
 import { setPageSeleted } from '../redux/store';
-import { useSelector, useDispatch } from "react-redux"
+import {  useDispatch } from "react-redux"
+import './Homepage.css'; 
 
-import './Homepage.css'; // Import the CSS file
 
+
+/*
+to include the original online applicaiton form into same layout 
+*/ 
 const OnlineApplciationForm = () => {
     const dispatch = useDispatch()
-    const [campusSelected, setCampusSelected] = React.useState('klt');
 
     useEffect(() => {
 
         dispatch(setPageSeleted('music'))
 
     }, [])
-    const handleCampusSeleted = (campus) => {
-        console.log(`#handleCampusSeleted is  ${handleCampusSeleted}`)
-        setCampusSelected(campus)
-    }
+  
 
     return (
         <Container sx={{ minWidth: 1495 }}  >

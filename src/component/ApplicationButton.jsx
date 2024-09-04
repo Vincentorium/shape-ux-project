@@ -1,20 +1,14 @@
 import React, { useState } from 'react';
-import Box from '@mui/material/Box';
 import Button from '@mui/joy/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import InputLabel from '@mui/material/InputLabel';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import { useDispatch } from "react-redux"
 import { setPageSeleted } from '../redux/store';
 import { useNavigate } from 'react-router-dom';
 import ApplicationCampusDialog from './ApplicationCampusDialog'
 
+
+/*
+ button allowing user to trigger campus selection to apply form
+*/
 export default function DialogSelect() {
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch()

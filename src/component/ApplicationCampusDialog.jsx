@@ -14,6 +14,10 @@ import { useDispatch } from "react-redux"
 import { setPageSeleted } from '../redux/store';
 import { useNavigate } from 'react-router-dom';
 
+
+/*
+ provide user dropdown list to select campus apply form
+*/
 export default function ApplicationCampusDialog({ setOpen,open  }) {
 
   const dispatch = useDispatch()

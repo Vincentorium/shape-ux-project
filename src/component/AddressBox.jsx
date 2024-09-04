@@ -15,7 +15,6 @@ import Box from '@mui/material/Box';
 
 export default function AddressBox() {
   const [open, setOpen] = React.useState(false);
-  const [type, setType] = React.useState('Guesthouse');
 
   const [selectedValue, setSelectedValue] = useState(['klt']);
   const [selectedValuePic, setSelectedValuePic] = useState(['klt1', 'klt2', 'klt3']);
