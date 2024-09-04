@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux"
 import { setLanSetting, setPageSeleted } from '../redux/store';
 import { pageData } from '../commonData/pageData'
-
+import IconButton from '@mui/material/IconButton';
 
 function Header() {
   const dispatch = useDispatch()
@@ -21,7 +21,7 @@ function Header() {
 
   useEffect(() => {
     console.log(`#Header-useEffect-lanSettingLC is ${lanSettingLC}`)
-    console.log(`#Header-useEffect-pageSeletedLC is ${pageSeletedLC === 'application' }`)
+    console.log(`#Header-useEffect-pageSeletedLC is ${pageSeletedLC === 'application'}`)
   }, [lanSettingLC])
 
 
@@ -41,12 +41,17 @@ function Header() {
     console.log(`#COM-Header: setNavFunc ${pageSeleted}`)
     dispatch(setPageSeleted(pageSeleted))
     setPageSeletedLC(pageSeleted)
-    
-console.log(`#application is ${pageSeleted}`)
+
+    console.log(`#application is ${pageSeleted}`)
     navigate(`/${pageSeleted}`);
   }
 
-
+  const handleNavFB = () => {
+    window.location.href = "https://www.facebook.com/yorkkindergartenofficial/";
+  }
+  const handleNavIG = () => {
+    window.location.href = "https://www.instagram.com/york_kindergarten/";
+  }
 
   const navigate = useNavigate();
   const handleHomeNav = () => {
@@ -87,7 +92,7 @@ console.log(`#application is ${pageSeleted}`)
           <Box
             component="div"
             sx={{
-              flexGrow: 4,
+              flexGrow: 94,
               display: { xs: 'none', sm: 'block' },
               marginTop: 4
             }}
@@ -125,7 +130,12 @@ console.log(`#application is ${pageSeleted}`)
               style={{ width: '0.85rem' }}
             />
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, backgroundColor: '#041138' }}>
+          <Box sx={{ 
+            flexGrow: 4, 
+            display: { xs: 'none', sm: 'block' },
+             backgroundColor: '#041138',
+             
+             }}>
 
             <Button
               variant="text"
@@ -169,7 +179,7 @@ console.log(`#application is ${pageSeleted}`)
               sx={{
 
                 color: pageSeletedLC === 'application' ? '#820632' : '#fff',
-                 fontSize: 20, fontWeight: 600,
+                fontSize: 20, fontWeight: 600,
                 textTransform: 'capitalize',
                 marginRight: 1,
                 '&:hover': {
@@ -182,7 +192,29 @@ console.log(`#application is ${pageSeleted}`)
               {pageData[lanSettingLC][3]}
             </Button>
           </Box>
+          <Box sx={{
 
+            display: 'flex',
+          }}>
+            <IconButton aria-label="delete">
+
+            </IconButton>
+            <Box>
+              <img src={`/asset/fbIcon.svg`}
+                style={{ width: '30px',paddingTop:3,cursor:'pointer' }}
+                onClick={handleNavFB}
+              />
+
+            </Box>
+
+            <Box>
+              <img src={`/asset/igIcon.svg`}
+                style={{ width: '46px',cursor:'pointer' }}
+                onClick={handleNavIG}
+
+              />
+            </Box>
+          </Box>
 
         </Toolbar>
       </AppBar>
